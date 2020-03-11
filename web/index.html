@@ -13,44 +13,6 @@
     <div class="cal">
         <h1>某疫情统计</h1>
     </div>
-    <!-- <div class="tip">
-        <div class="a1">
-            <div>
-                <h3>现有确诊</h3>
-                <p>30000</p>
-                <p>较昨日:<span>-1300</span></p>
-            </div>
-            <div>
-                <h3>累计确诊</h3>
-                <p>80000</p>
-                <p>较昨日:<span>+20</span></p>
-            </div>
-        </div>
-        <div class="a2">
-            <div>
-                <h3>现有疑似</h3>
-                <p>350</p>
-                <p>较昨日:<span>+30</span></p>
-            </div>
-            <div>
-                <h3>累计治愈</h3>
-                <p>60000</p>
-                <p>较昨日:<span>+300</span></p>
-            </div>
-        </div>
-        <div class="a3">
-            <div>
-                <h3>现有重症</h3>
-                <p>4000</p>
-                <p>较昨日:<span>-1300</span></p>
-            </div>
-            <div>
-                <h3>现有死亡</h3>
-                <p>3000</p>
-                <p>较昨日:<span>+30</span></p>
-            </div>
-        </div>
-    </div> -->
     <div id = "dataInfo">
 		<table id = "dataOverviewTable">
 			<tr>
@@ -116,11 +78,11 @@
             <input class="but" type="button" id = "butnow" value="现有确诊" onclick="current()">
             <input class="but" type="button" id = "butall" value="累计确诊" onclick="past()">
         </div>
-        <div id="maps" style="width: 880px;height:400px;"></div>
+        <div id="maps"></div>
         <div id = "varytrend">
             <h1 id = "header_3">变化趋势</h1>
         </div>
-        <div id="box" style="width: 880px;height: 600px;background-color: white"></div>
+        <div id="box"></div>
         <script type="text/javascript">
             var myChart=echarts.init(document.getElementById("box"));
             var option={

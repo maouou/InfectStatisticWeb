@@ -1,6 +1,5 @@
 *,p{
     color: black;
-    margin: 5px;
 }
 
 body{
@@ -16,6 +15,14 @@ h1{
     width: 100%;
     height: 1000px;
     background-color:antiquewhite;
+}
+#maps{
+	width: 100%;
+	height:400px;
+}
+#box{
+	width: 100%;
+	height:400px;
 }
 .cal
 {
