@@ -3,15 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <title>疫情统计</title>
+    <link rel="stylesheet" type="text/css" href="js/timeline.css">
     <link rel="stylesheet" type="text/css" href="js/style.css">
+    <script type="text/javascript" src="js/echarts.min.js" ></script>
+    <script type="text/javascript" src="js/china.js" ></script>
 </head>
 <body>
 <div class="main">
     <div class="cal">
         <ul>
-            <li>疫情地图</li>
-            <li>新闻播报</li>
+            <li id="li">疫情地图</li>
+            <li id="li2">新闻播报</li>
         </ul>
+    </div>
+    <div class="tip">
+        <div class="a1">
+            <div>
+                <h3>现有确诊</h3>
+                <p>30000</p>
+                <p>较昨日:<span>-1300</span></p>
+            </div>
+            <div>
+                <h3>累计确诊</h3>
+                <p>80000</p>
+                <p>较昨日:<span>+20</span></p>
+            </div>
+        </div>
+        <div class="a2">
+            <div>
+                <h3>现有疑似</h3>
+                <p>350</p>
+                <p>较昨日:<span>+30</span></p>
+            </div>
+            <div>
+                <h3>累计治愈</h3>
+                <p>60000</p>
+                <p>较昨日:<span>+300</span></p>
+            </div>
+        </div>
+        <div class="a3">
+            <div>
+                <h3>现有重症</h3>
+                <p>4000</p>
+                <p>较昨日:<span>-1300</span></p>
+            </div>
+            <div>
+                <h3>现有死亡</h3>
+                <p>3000</p>
+                <p>较昨日:<span>+30</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="map">
+        <div>
+            <h1>全国疫情地图</h1>
+        </div>
+        <div>
+            <input class="but" type="button" value="现有确诊">
+            <input class="but" type="button" value="累计确诊">
+        </div>
+        <div id="maps" style="width: 880px;height:400px;"></div>
+            <script type="text/javascript">
+                var mydata = [
+                    {name: '北京',value: 181},{name: '天津',value: 89 },
+                    {name: '上海',value: 65 },{name: '重庆',value: 221 },
+                    {name: '河北',value: 61 },{name: '河南',value: 262 },
+                    {name: '云南',value: 43 },{name: '辽宁',value: 123 },
+                    {name: '黑龙江',value: 227 },{name: '湖南',value: 245 },
+                    {name: '安徽',value: 270 },{name: '山东',value: 401 },
+                    {name: '新疆',value: 44 },{name: '江苏',value: 173 },
+                    {name: '浙江',value: 396 },{name: '江西',value: 251 },
+                    {name: '湖北',value: 43323 },{name: '广西',value: 113 },
+                    {name: '甘肃',value: 9 },{name: '山西',value: 65 },
+                    {name: '内蒙古',value: 34 },{name: '陕西',value: 65 },
+                    {name: '吉林',value: 24 },{name: '福建',value: 87 },
+                    {name: '贵州',value: 67 },{name: '广东',value: 515 },
+                    {name: '青海',value: 78 },{name: '西藏',value: 0 },
+                    {name: '四川',value: 239 },{name: '宁夏',value: 23 },
+                    {name: '海南',value: 45 },{name: '台湾',value: 89 },
+                    {name: '香港',value: 44 },{name: '澳门',value: 32 }
+                ];
+                var myChart = echarts.init(document.getElementById('maps'));
+                var optionMap = {
+                    backgroundColor: '#FFFFFF',
+                    title: {
+                        text: '全国地图大数据',
+                        subtext: '',
+                        x:'center'
+                    },
+                    tooltip : {
+                        //trigger: 'item',
+                        //triggerOn: 'click',
+                    },
+                    //左侧小导航图标
+                    visualMap: {
+                        show : true,
+                        x: 'left',
+                        y: 'center',
+                        splitList: [
+                            {start: 10000},{start: 1000, end: 9999},
+                            {start: 100, end: 999},{start: 10, end: 99},
+                            {start: 1, end: 9},{start: 0, end: 0},
+                        ],
+                        color: ['#611931', '#A40D14', '#D30910','#F99C48', '#FFC4A7', '#FFFFFF']
+                    },
+
+                    //配置属性
+                    series: [{
+                        name: '确诊人数：',
+                        type: 'map',
+                        mapType: 'china',
+                        roam: true,
+                        label: {
+                            normal: {
+                                show: true  //省份名称
+                            },
+                            emphasis: {
+                                show: true
+                            }
+                        },
+                        data:mydata  //数据
+                    }]
+                };
+                //初始化echarts实例
+                //var myChart = echarts.init(document.getElementById('main'));
+
+                //使用制定的配置项和数据显示图表
+                myChart.setOption(optionMap);
+            </script>
+        <div>
+            <h1>变化趋势</h1>
+        </div>
+        <div id="box" style="width: 880px;height: 600px;background-color: white"></div>
+        <script type="text/javascript">
+            var myChart=echarts.init(document.getElementById("box"));
+            var option={
+                //标题
+                title:{
+                    text:"折线图"
+                },
+                //工具箱
+                //保存图片
+                toolbox:{
+                    show:true,
+                    feature:{
+                        saveAsImage:{
+                            show:true
+                        }
+                    }
+                },
+                tooltip:{
+                    trigger: 'axis'
+                },
+                //图例-每一条数据的名字叫销量
+                legend:{
+                    data:['确诊人数（单位：人)','疑似人数（单位：人)',"死亡人数（单位：人)",'治愈人数（单位：人)']
+                },
+                //x轴
+                xAxis:{
+                    name:"日期",
+                    data:["2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26","2020-01-27","2020-01-28","2020-01-29"
+                        ,"2020-01-30","2020-01-31","2020-02-01","2020-02-02","2020-02-03","2020-02-04","2020-02-05","2020-02-06"
+                        ,"2020-02-07","2020-02-08"
+                    ]
+                    //data:["2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26","2020-01-27"]
+                },
+                //y轴没有显式设置，根据值自动生成y轴
+                yAxis:{
+                    name:"人数"
+                },
+                //数据-data是最终要显示的数据
+                series:[
+                    {
+                        name:'确诊人数（单位：人)',
+                        type:'line',
+                        data:[23,34,44,59,70,81,120,378,546,739,1490,2541,3562,4571,6591,7621,8631,9641],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"red"
+                    },
+                    {
+                        name:'疑似人数（单位：人)',
+                        type:'line',
+                        data:[50,78,123,190,227,249,326,378,469,679,950,1456,2234,2890,2789,3578,4345,6236],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"orange"
+                    },
+                    {
+                        name:'死亡人数（单位：人)',
+                        type:'line',
+                        data:[0,0,13,25,52,88,115,223,437,467,572,678,782,896,923,978,1134,1296],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"black"
+                    },
+                    {
+                        name:'治愈人数（单位：人)',
+                        type:'line',
+                        data:[0,0,0,64,123,324,387,413,525,689,740,978,1288,1394,1414,2545,3768,3976],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"green"
+                    }
+                ]
+            };
+            //使用刚刚指定的配置项和数据项显示图表
+            myChart.setOption(option);
+        </script>
+        <div>
+            <h1>疫情速查</h1>
+        </div>
+        <div id="table" style="width: 880px;height:400px;background-color: hotpink">
+            <table>
+                <tr>
+                    <th>地区</th>
+                    <th>新增确诊</th>
+                    <th>累计确诊</th>
+                    <th>治愈</th>
+                    <th>死亡</th>
+                </tr>
+                <tr>
+                    <td>武汉</td>
+                    <td class="td">11</td>
+                    <td class="td">22</td>
+                    <td class="td">33</td>
+                    <td class="td">44</td>
+                </tr>
+                <tr>
+                    <td>武汉</td>
+                    <td class="td">11</td>
+                    <td class="td">22</td>
+                    <td class="td">33</td>
+                    <td class="td">44</td>
+                </tr>
+                <tr>
+                    <td>武汉</td>
+                    <td class="td">11</td>
+                    <td class="td">22</td>
+                    <td class="td">33</td>
+                    <td class="td">44</td>
+                </tr>
+                <tr>
+                    <td>武汉</td>
+                    <td class="td">11</td>
+                    <td class="td">22</td>
+                    <td class="td">33</td>
+                    <td class="td">44</td>
+                </tr>
+                <tr>
+                    <td>武汉</td>
+                    <td class="td">11</td>
+                    <td class="td">22</td>
+                    <td class="td">33</td>
+                    <td class="td">44</td>
+                </tr>
+                <tr>
+                    <td>武汉</td>
+                    <td class="td">11</td>
+                    <td class="td">22</td>
+                    <td class="td">33</td>
+                    <td class="td">44</td>
+                </tr>
+                <tr>
+                    <td>武汉</td>
+                    <td class="td">11</td>
+                    <td class="td">22</td>
+                    <td class="td">33</td>
+                    <td class="td">44</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <div class="new">
+        <div>
+            <h1>新闻速报</h1>
+        </div>
+        <section id="cd-timeline" class="cd-container">
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-picture">
+                    <img src="img/cd-icon-picture.svg" alt="Picture">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>习近平考察火神山医院</h2>
+                    <p>10日上午，习近平一下飞机就专程前往火神山医院，了解医院建设运行、患者收治、
+                        医务人员防护保障、科研攻关等情况，亲切看望正在接受治疗的患者，关心慰问日夜奋战在抗击疫情第一线的医务工作者，
+                        勉励大家坚定信心，战胜疫情。</p>
+                    <a href="https://www.sohu.com/a/378988083_100170731?_trans_=000014_bdss_dkwhfy" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-10 14:13</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-movie">
+                    <img src="img/cd-icon-movie.svg" alt="Movie">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>全关了！最后一家方舱医院今日休舱 方舱医院圆满完成历史使命</h2>
+                    <p>3月10日下午3点半，随着最后一批49名患者从洪山体育馆走出，运行了35天的武汉市首个方舱医院——武昌方舱医院正式休舱。
+                        方舱医院，这一在武汉市新冠肺炎疫情防控关键时期，发挥了关键作用的特殊医院，圆满完成了历史使命。</p>
+                    <a href="http://www.fivepx.net/texiaofenxiang/2015/01-07/67.html" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-10 17:20</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-picture">
+                    <img src="img/cd-icon-picture.svg" alt="Picture">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>疫情什么时候能结束？李兰娟院士等专家回应 </h2>
+                    <p>“现在全国范围内疫情已经基本得到控制，武汉疫情也在明显变好，希望3月底新增病例可以全部清零。”
+                        国家卫健委高级别专家组成员、中国工程院院士李兰娟告诉人民日报健康客户端记者。</p>
+                    <a href="https://www.sohu.com/a/378946869_162522?_trans_=000014_bdss_dkwhfy" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-10 12:40</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-movie">
+                    <img src="img/cd-icon-movie.svg" alt="Movie">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>新冠肺炎下的“疫苗赛跑”</h2>
+                    <p>近日，一条“全世界第一支新冠状病毒疫苗阶段性成功注射到发明人陈薇院士的左臂上”的微博广泛流传，该微博还配有一张陈薇单手叉腰、
+                        在手臂注射针剂的照片。陈薇是中国工程院院士、军事医学研究院研究员，1月26日带领团队进驻武汉。</p>
+                    <a href="https://www.sohu.com/a/378057217_114988?_trans_=000014_bdss_dkwhfy" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-06 13:16</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-movie">
+                    <img src="img/cd-icon-location.svg" alt="Location">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>欧盟27国均现疫情，意大利病例近万封闭全国、囚犯越狱</h2>
+                    <p>塞浦路斯卫生部长约安努9日表示，塞浦路斯首次发现2例新冠肺炎确诊病例，均为输入型病例，
+                        两位患者分别从英国和意大利返回塞浦路斯。 至此，欧盟27个成员国均出现了新冠肺炎病例，其中意大利病例近万，
+                        法国和西班牙的感染人数破千。</p>
+                    <a href="http://news.sina.com.cn/w/2020-03-10/doc-iimxxstf7976870.shtml" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020年03月10日 20:36</span>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 </body>
