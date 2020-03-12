@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/echarts.min.js" ></script>
+    <link rel="stylesheet" href="css/detail.css">
+</head>
+<body>
+<div id="main">
+<div id="box" style="width: 800px;height: 500px"></div>
+<script type="text/javascript">
+    function getQueryVariable(variable)
+    {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+    }
+    var Request = getQueryVariable("province")
+    switch (Request)
+    {
+        case 1:
+        {
+            break;
+        }
+        case 2:
+        {
+            break;
+        }
+        case 3:
+        {
+            break;
+        }
+        case 4:
+        {
+            break;
+        }
+        case 5:
+        {
+            break;
+        }
+        case 6:
+        {
+            break;
+        }
+        case 7:
+        {
+            break;
+        }
+        case 8:
+        {
+            break;
+        }
+        case 9:
+        {
+            break;
+        }
+        case 10:
+        {
+            break;
+        }
+        case 11:
+        {
+            break;
+        }
+        case 12:
+        {
+            break;
+        }
+        case 13:
+        {
+            break;
+        }
+        case 14:
+        {
+            break;
+        }
+        case 15:
+        {
+            break;
+        }
+        case 16:
+        {
+            break;
+        }
+        case 17:
+        {
+            break;
+        }
+        case 18:
+        {
+            break;
+        }
+        case 19:
+        {
+            break;
+        }
+        case 20:
+        {
+            break;
+        }
+        case 21:
+        {
+            break;
+        }
+        case 22:
+        {
+            break;
+        }
+        case 23:
+        {
+            break;
+        }
+        case 24:
+        {
+            break;
+        }
+        case 25:
+        {
+            break;
+        }
+        case 26:
+        {
+            break;
+        }
+        case 27:
+        {
+            break;
+        }
+        case 28:
+        {
+            break;
+        }
+        case 29:
+        {
+            break;
+        }
+        case 30:
+        {
+            break;
+        }
+        case 31:
+        {
+            break;
+        }
+        case 32:
+        {
+            break;
+        }
+        case 33:
+        {
+            break;
+        }
+        case 34:
+        {
+            break;
+        }
+    }
+    var myChart=echarts.init(document.getElementById("box"));
+    var option={
+        //标题
+        title:{
+            text:"province"
+        },
+        //工具箱
+        //保存图片
+        toolbox:{
+            show:true,
+            feature:{
+                saveAsImage:{
+                    show:true
+                }
+            }
+        },
+        tooltip:{
+            trigger: 'axis'
+        },
+        legend:{
+            data:['确诊人数（单位：人)','疑似人数（单位：人)',"死亡人数（单位：人)",'治愈人数（单位：人)']
+        },
+        //x轴
+        xAxis:{
+            name:"日期",
+            data:["2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26","2020-01-27","2020-01-28","2020-01-29"
+                ,"2020-01-30","2020-01-31","2020-02-01","2020-02-02","2020-02-03","2020-02-04","2020-02-05","2020-02-06"
+                ,"2020-02-07","2020-02-08"
+            ]
+            //data:["2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26","2020-01-27"]
+        },
+        //y轴没有显式设置，根据值自动生成y轴
+        yAxis:{
+            name:"人数"
+        },
+        //数据-data是最终要显示的数据
+        series:[
+            {
+                name:'确诊人数（单位：人)',
+                type:'line',
+                data:[23,34,44,59,70,81,120,378,546,739,1490,2541,3562,4571,6591,7621,8631,9641],
+                smooth: true , //true 为平滑曲线，false为直线
+                itemStyle : { normal: {label : {show: true}}},
+                color:"red"
+            },
+            {
+                name:'疑似人数（单位：人)',
+                type:'line',
+                data:[50,78,123,190,227,249,326,378,469,679,950,1456,2234,2890,2789,3578,4345,6236],
+                smooth: true , //true 为平滑曲线，false为直线
+                itemStyle : { normal: {label : {show: true}}},
+                color:"orange"
+            },
+            {
+                name:'死亡人数（单位：人)',
+                type:'line',
+                data:[0,0,13,25,52,88,115,223,437,467,572,678,782,896,923,978,1134,1296],
+                smooth: true , //true 为平滑曲线，false为直线
+                itemStyle : { normal: {label : {show: true}}},
+                color:"black"
+            },
+            {
+                name:'治愈人数（单位：人)',
+                type:'line',
+                data:[0,0,0,64,123,324,387,413,525,689,740,978,1288,1394,1414,2545,3768,3976],
+                smooth: true , //true 为平滑曲线，false为直线
+                itemStyle : { normal: {label : {show: true}}},
+                color:"green"
+            }
+        ]
+    };
+    //使用刚刚指定的配置项和数据项显示图表
+    myChart.setOption(option);
+</script>
+</div>
+</body>
+</html>

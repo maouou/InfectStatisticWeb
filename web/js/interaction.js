@@ -1,21 +1,21 @@
 var mydata = [
-    {name: '北京', value: 181}, {name: '天津', value: 41},
-    {name: '上海', value: 156}, {name: '重庆', value: 258},
-    {name: '河北', value: 109}, {name: '河南', value: 488},
-    {name: '云南', value: 102}, {name: '辽宁', value: 63},
-    {name: '黑龙江', value: 91}, {name: '湖南', value: 455},
-    {name: '安徽', value: 335}, {name: '山东', value: 225},
-    {name: '新疆', value: 21}, {name: '江苏', value: 230},
-    {name: '浙江', value: 639}, {name: '江西', value: 324},
-    {name: '湖北', value: 8601}, {name: '广西', value: 127},
-    {name: '甘肃', value: 49}, {name: '山西', value: 55},
-    {name: '内蒙古', value: 26}, {name: '陕西', value: 102},
-    {name: '吉林', value: 22}, {name: '福建', value: 179},
-    {name: '贵州', value: 44}, {name: '广东', value: 649},
-    {name: '青海', value: 11}, {name: '西藏', value: 1},
-    {name: '四川', value: 228}, {name: '宁夏', value: 28},
-    {name: '海南', value: 64}, {name: '台湾', value: 89},
-    {name: '香港', value: 44}, {name: '澳门', value: 32}
+    {name: '北京', value: 181,index: 1}, {name: '天津', value: 41,index: 2},
+    {name: '上海', value: 156,index: 3}, {name: '重庆', value: 258,index: 4},
+    {name: '河北', value: 109,index: 5}, {name: '河南', value: 488,index: 6},
+    {name: '云南', value: 102,index: 7}, {name: '辽宁', value: 63,index: 8},
+    {name: '黑龙江', value: 91,index: 9}, {name: '湖南', value: 455,index: 10},
+    {name: '安徽', value: 335,index: 11}, {name: '山东', value: 225,index: 12},
+    {name: '新疆', value: 21,index: 13}, {name: '江苏', value: 230,index: 14},
+    {name: '浙江', value: 639,index: 15}, {name: '江西', value: 324,index: 16},
+    {name: '湖北', value: 8601,index: 17}, {name: '广西', value: 127,index: 18},
+    {name: '甘肃', value: 49,index: 19}, {name: '山西', value: 55,index: 20},
+    {name: '内蒙古', value: 26,index: 21}, {name: '陕西', value: 102,index: 22},
+    {name: '吉林', value: 22,index: 23}, {name: '福建', value: 179,index: 24},
+    {name: '贵州', value: 44,index: 25}, {name: '广东', value: 649,index: 26},
+    {name: '青海', value: 11,index: 27}, {name: '西藏', value: 1,index: 28},
+    {name: '四川', value: 228,index: 29}, {name: '宁夏', value: 28,index: 30},
+    {name: '海南', value: 64,index: 31}, {name: '台湾', value: 89,index: 32},
+    {name: '香港', value: 44,index: 33}, {name: '澳门', value: 32,index: 34}
 ];
 var myChart = echarts.init(document.getElementById('maps'));
 var optionMap = {
@@ -60,25 +60,29 @@ var optionMap = {
     }]
 };
 myChart.setOption(optionMap);
+myChart.on('click',function(params)
+{
+    window.location.href="detail.html?province="+params.data.index;
+});
 function past() {
     var mydata = [
-        {name: '北京', value: 191}, {name: '天津', value: 50},
-        {name: '上海', value: 167}, {name: '重庆', value: 262},
-        {name: '河北', value: 69}, {name: '河南', value: 493},
-        {name: '云南', value: 111}, {name: '辽宁', value: 68},
-        {name: '黑龙江', value: 94}, {name: '湖南', value: 463},
-        {name: '安徽', value: 339}, {name: '山东', value: 248},
-        {name: '新疆', value: 24}, {name: '江苏', value: 236},
-        {name: '浙江', value: 661}, {name: '江西', value: 334},
-        {name: '湖北', value: 9074}, {name: '广西', value: 129},
-        {name: '甘肃', value: 52}, {name: '山西', value: 63},
-        {name: '内蒙古', value: 28}, {name: '陕西', value: 117},
-        {name: '吉林', value: 16}, {name: '福建', value: 179},
-        {name: '贵州', value: 69}, {name: '广东', value: 663},
-        {name: '青海', value: 13}, {name: '西藏', value: 1},
-        {name: '四川', value: 232}, {name: '宁夏', value: 30},
-        {name: '海南', value: 45}, {name: '台湾', value: 89},
-        {name: '香港', value: 44}, {name: '澳门', value: 32}
+        {name: '北京', value: 191,index: 1}, {name: '天津', value: 50,index: 2},
+        {name: '上海', value: 167,index: 3}, {name: '重庆', value: 262,index: 4},
+        {name: '河北', value: 69,index: 5}, {name: '河南', value: 493,index: 6},
+        {name: '云南', value: 111,index: 7}, {name: '辽宁', value: 68,index: 8},
+        {name: '黑龙江', value: 94,index: 9}, {name: '湖南', value: 463,index: 10},
+        {name: '安徽', value: 339,index: 11}, {name: '山东', value: 248,index: 12},
+        {name: '新疆', value: 24,index: 13}, {name: '江苏', value: 236,index: 14},
+        {name: '浙江', value: 661,index: 15}, {name: '江西', value: 334,index: 16},
+        {name: '湖北', value: 9074,index: 17}, {name: '广西', value: 129,index: 18},
+        {name: '甘肃', value: 52,index: 19}, {name: '山西', value: 63,index: 20},
+        {name: '内蒙古', value: 28,index: 21}, {name: '陕西', value: 117,index: 22},
+        {name: '吉林', value: 16,index: 23}, {name: '福建', value: 179,index: 24},
+        {name: '贵州', value: 69,index: 25}, {name: '广东', value: 663,index: 26},
+        {name: '青海', value: 13,index: 27}, {name: '西藏', value: 1,index: 28},
+        {name: '四川', value: 232,index: 29}, {name: '宁夏', value: 30,index: 30},
+        {name: '海南', value: 45,index: 31}, {name: '台湾', value: 89,index: 32},
+        {name: '香港', value: 44,index: 33}, {name: '澳门', value: 32,index: 34}
     ];
     var myChart = echarts.init(document.getElementById('maps'));
     var optionMap = {
