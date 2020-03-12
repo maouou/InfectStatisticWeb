@@ -22,14 +22,14 @@
 				<td class = "tableLarger" id = "NowNerText">现有重症</td>
 			</tr>
 			<tr>
-				<td class = "tableMiddle" id = "NowCom">59843</td>
-				<td class = "tableMiddle" id = "NowSpe">2495</td>
-				<td class = "tableMiddle" id = "NowNer">16200</td>
+				<td class = "tableMiddle" id = "NowCom">13904</td>
+				<td class = "tableMiddle" id = "NowSpe">1724</td>
+				<td class = "tableMiddle" id = "NowNer">3456</td>
 			</tr>
 			<tr>
-				<td class = "tableSmall">较昨日<span id = "NowComCom"> -2536</span></td>
-				<td class = "tableSmall">较昨日<span id = "NowSpeCom"> -1100</span></td>
-				<td class = "tableSmall">较昨日<span id = "NowNerCom">  -523</span></td>
+				<td class = "tableSmall">较昨日<span id = "NowComCom"> +2579</span></td>
+				<td class = "tableSmall">较昨日<span id = "NowSpeCom"> +284</span></td>
+				<td class = "tableSmall">较昨日<span id = "NowNerCom"> +321</span></td>
 			</tr>
 			<tr>
 			</tr>
@@ -54,21 +54,19 @@
 				<td class = "tableLarger" id = "allDeaText">累计死亡</td>
 			</tr>
 			<tr>
-				<td class = "tableMiddle" id = "allCom">78190</td>
-				<td class = "tableMiddle" id = "allCur">19851</td>
-				<td class = "tableMiddle" id = "allDea">2718</td>
+				<td class = "tableMiddle" id = "allCom">14479</td>
+				<td class = "tableMiddle" id = "allCur">295</td>
+				<td class = "tableMiddle" id = "allDea">304</td>
 			</tr>
 			<tr>
-				<td class = "tableSmall">较昨日<span id = "allComCom">  +411</span></td>
-				<td class = "tableSmall">较昨日<span id = "allCurCom"> +2498</span></td>
-				<td class = "tableSmall">较昨日<span id = "allDeaCom">   +52</span></td>
+				<td class = "tableSmall">较昨日<span id = "allComCom">  +2579</span></td>
+				<td class = "tableSmall">较昨日<span id = "allCurCom"> +80</span></td>
+				<td class = "tableSmall">较昨日<span id = "allDeaCom">   +45</span></td>
 			</tr>
 		</table>
 		<p id = "deadlineTime">数据截止到<span id = "dataDeadline">2020.2.20 12:50</span>|数据来源于某统计网站
 	</div>
-	<div class = 'divide'>
-		<p> </p>
-	</div>
+
 	
     <div class="map">
         <div id = "header_2">
@@ -110,10 +108,8 @@
                 //x轴
                 xAxis:{
                     name:"日期",
-                    data:["2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26","2020-01-27","2020-01-28","2020-01-29"
-                        ,"2020-01-30","2020-01-31","2020-02-01","2020-02-02","2020-02-03","2020-02-04","2020-02-05","2020-02-06"
-                        ,"2020-02-07","2020-02-08"
-                    ]
+                    data:["2020-01-19","2020-01-20","2020-01-21","2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26"
+                        ,"2020-01-27","2020-01-28","2020-01-29","2020-01-30","2020-01-31","2020-02-01","2020-02-02"]
                     //data:["2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26","2020-01-27"]
                 },
                 //y轴没有显式设置，根据值自动生成y轴
@@ -125,7 +121,7 @@
                     {
                         name:'确诊人数（单位：人)',
                         type:'line',
-                        data:[23,34,44,59,70,81,120,378,546,739,1490,2541,3562,4571,6591,7621,8631,9641],
+                        data:[2,7,283,430,599,859,1286,1970,2709,4459,5906,7588,9524,11443,13904],
                         smooth: true , //true 为平滑曲线，false为直线
                         itemStyle : { normal: {label : {show: true}}},
                         color:"red"
@@ -133,7 +129,7 @@
                     {
                         name:'疑似人数（单位：人)',
                         type:'line',
-                        data:[50,78,123,190,227,249,326,378,469,679,950,1456,2234,2890,2789,3578,4345,6236],
+                        data:[0,0,6,23,23,25,68,140,282,483,666,932,1182,1147,1742],
                         smooth: true , //true 为平滑曲线，false为直线
                         itemStyle : { normal: {label : {show: true}}},
                         color:"orange"
@@ -141,7 +137,7 @@
                     {
                         name:'死亡人数（单位：人)',
                         type:'line',
-                        data:[0,0,13,25,52,88,115,223,437,467,572,678,782,896,923,978,1134,1296],
+                        data:[0,0,6,9,17,26,41,56,82,106,132,170,213,259,304],
                         smooth: true , //true 为平滑曲线，false为直线
                         itemStyle : { normal: {label : {show: true}}},
                         color:"black"
@@ -149,7 +145,7 @@
                     {
                         name:'治愈人数（单位：人)',
                         type:'line',
-                        data:[0,0,0,64,123,324,387,413,525,689,740,978,1288,1394,1414,2545,3768,3976],
+                        data:[0,0,25,28,30,34,37,47,51,61,68,91,136,215,295],
                         smooth: true , //true 为平滑曲线，false为直线
                         itemStyle : { normal: {label : {show: true}}},
                         color:"green"
@@ -172,241 +168,241 @@
                     <th id = "deadtable">死亡</th>
                 </tr>
                 <tr>
-                    <td>湖北省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">湖北省</td>
+                    <td class="td">1921</td>
+                    <td class="td">9074</td>
+                    <td class="td">179</td>
+                    <td class="td">0</td>
                 </tr>
                 <tr>
-                    <td>北京市</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">北京市</td>
+                    <td class="td">8</td>
+                    <td class="td">191</td>
+                    <td class="td">0</td>
+                    <td class="td">2</td>
                 </tr>
                 <tr>
-                    <td>广东省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">广东省</td>
+                    <td class="td">79</td>
+                    <td class="td">663</td>
+                    <td class="td">2</td>
+                    <td class="td">0</td>
                 </tr>
                 <tr>
-                    <td>中国香港</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">中国香港</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
                 </tr>
                 <tr>
-                    <td>四川省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">四川省</td>
+                    <td class="td">24</td>
+                    <td class="td">232</td>
+                    <td class="td">3</td>
+                    <td class="td">2</td>
                 </tr>
                 <tr>
-                    <td>甘肃省</td>
+                    <td class="province">甘肃省</td>
                     <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="td">52</td>
+                    <td class="td">3</td>
+                    <td class="td">0</td>
                 </tr>
                 <tr>
-                    <td>中国台湾</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">中国台湾</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
                 </tr>
                                 <tr>
-                    <td>山东省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">山东省</td>
+                    <td class="td">23</td>
+                    <td class="td">225</td>
+                    <td class="td">0/td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>重庆市</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">重庆市</td>
+                    <td class="td">24</td>
+                    <td class="td">262</td>
+                    <td class="td">3</td>
+                    <td class="td">2</td>
                 </tr>
                                 <tr>
-                    <td>上海市</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">上海市</td>
+                    <td class="td">24</td>
+                    <td class="td">167</td>
+                    <td class="td">10</td>
+                    <td class="td">1</td>
                 </tr>
                                 <tr>
-                    <td>湖南省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">湖南省</td>
+                    <td class="td">74</td>
+                    <td class="td">463</td>
+                    <td class="td">8</td>
+                    <td class="td">0</td>
                 </tr>
                 <tr>
-                    <td>辽宁省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">辽宁省</td>
+                    <td class="td">4</td>
+                    <td class="td">64</td>
+                    <td class="td">1</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>广西壮族自治区</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">广西壮族自治区</td>
+                    <td class="td">16</td>
+                    <td class="td">129</td>
+                    <td class="td">2</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>陕西省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">陕西省</td>
+                    <td class="td">15</td>
+                    <td class="td">102</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>贵州省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">贵州省</td>
+                    <td class="td">8</td>
+                    <td class="td">41</td>
+                    <td class="td">2</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>浙江省</td>
-                    <td class="td">11</td>
+                    <td class="province">浙江省</td>
+                    <td class="td">62</td>
+                    <td class="td">661</td>
                     <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>河北省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">河北省</td>
+                    <td class="td">9</td>
+                    <td class="td">69</td>
+                    <td class="td">3</td>
+                    <td class="td">2</td>
                 </tr>
                                 <tr>
-                    <td>江苏省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">江苏省</td>
+                    <td class="td">34</td>
+                    <td class="td">334</td>
+                    <td class="td">6</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>海南省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">海南省</td>
+                    <td class="td">7</td>
+                    <td class="td">69</td>
+                    <td class="td">4</td>
+                    <td class="td">2</td>
                 </tr>
                                 <tr>
-                    <td>内蒙古自治区</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">内蒙古自治区</td>
+                    <td class="td">3</td>
+                    <td class="td">20</td>
+                    <td class="td">1</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>宁夏回族自治区</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">宁夏回族自治区</td>
+                    <td class="td">2</td>
+                    <td class="td">26</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>河南省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">河南省</td>
+                    <td class="td">71</td>
+                    <td class="td">493</td>
+                    <td class="td">3</td>
+                    <td class="td">4</td>
                 </tr>
                                 <tr>
-                    <td>江西省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">江西省</td>
+                    <td class="td">47</td>
+                    <td class="td">334</td>
+                    <td class="td">10</td>
+                    <td class="td">1</td>
                 </tr>
                                 <tr>
-                    <td>云南省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">云南省</td>
+                    <td class="td">12</td>
+                    <td class="td">105</td>
+                    <td class="td">3</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>天津市</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">天津市</td>
+                    <td class="td">9</td>
+                    <td class="td">41</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>山西省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">山西省</td>
+                    <td class="td">9</td>
+                    <td class="td">56</td>
+                    <td class="td">1</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>吉林省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">吉林省</td>
+                    <td class="td">0</td>
+                    <td class="td">16</td>
+                    <td class="td">1</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>安徽省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">安徽省</td>
+                    <td class="td">43</td>
+                    <td class="td">339</td>
+                    <td class="td">5</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>福建省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">福建省</td>
+                    <td class="td">20</td>
+                    <td class="td">179</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>新疆维吾尔自治区</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">新疆维吾尔自治区</td>
+                    <td class="td">3</td>
+                    <td class="td">21</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>青海省</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">青海省</td>
+                    <td class="td">2</td>
+                    <td class="td">10</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
                 </tr>
                                 <tr>
-                    <td>中国澳门</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">中国澳门</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
                 </tr>
                                 <tr>
-                    <td>西藏自治区</td>
-                    <td class="td">11</td>
-                    <td class="td">22</td>
-                    <td class="td">33</td>
-                    <td class="td">44</td>
+                    <td class="province">西藏自治区</td>
+                    <td class="td">0</td>
+                    <td class="td">1</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
                 </tr>
             </table>
         </div>
     </div>
     <div class="new">
-        <div>
+        <div class="newtitle">
             <h1>新闻速报</h1>
         </div>
         <section id="cd-timeline" class="cd-container">

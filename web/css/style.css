@@ -1,5 +1,6 @@
 *,p{
     color: black;
+	margin: 0;
 }
 
 body{
@@ -21,6 +22,7 @@ h1{
 	height:400px;
 }
 #box{
+	background-color: khaki;
 	width: 100%;
 	height:400px;
 }
@@ -33,7 +35,7 @@ h1{
 #header_2
 {
 	align:center;
-	padding:8% 0 5% 0;
+	border-radius: 20px;
 }
 .cal ul li{
     line-height: 50px;
@@ -85,6 +87,13 @@ h1{
     background-color:gainsboro;
     border-radius: 5px;
 }
+.province{
+	background-color: #4cecff;
+	border-radius: 5px;
+}
+.newtitle{
+	background-color: antiquewhite;
+}
 .but{
     margin-left: 2%;
     margin-right: 2%;
@@ -93,7 +102,10 @@ h1{
     font-size:1.2em;
     color:red;
     font-weight:bold;
-    background:white;
+    background: #e3fff3;
+	border-radius: 20px;
+	border: none;
+	outline-color: khaki;
 }
 #btunow
 {
@@ -105,7 +117,11 @@ h1{
 }
 #trans
 {
-	padding:0 0 4% 0;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+#table{
+	background-color: khaki;
 }
 .new{
     background-color: khaki;
@@ -125,11 +141,11 @@ h1{
 }
 #varytrend
 {
-	padding:8% 0 5% 0;
+	border-radius: 20px;
 }
 #quicktour
 {
-	padding:7% 0 4% 0;
+	border-radius: 20px;
 }
 #areatable
 {
@@ -166,7 +182,6 @@ body,html
 .main
 {
 	margin:0 auto;
-    background-color: #ffffff;
     height:100%;
     width:60%;
 }
@@ -185,6 +200,8 @@ h1
 	text-align:center;
 	align:center;
 	margin:0 auto;
+	background-color: #14ffc0;
+	border-radius: 10px;
 }
 #dataOverviewTable
 {
