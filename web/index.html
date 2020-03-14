@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>疫情统计</title>
+    <link rel="stylesheet" type="text/css" href="css/timeline.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/echarts.min.js" ></script>
+    <script type="text/javascript" src="js/china.js" ></script>
+</head>
+<body>
+<div class="main">
+    <div class="cal">
+        <h1>某疫情统计</h1>
+        <h4>以实现为主要目的，数据存疑</h4>
+    </div>
+    <div id = "dataInfo">
+		<table id = "dataOverviewTable">
+			<tr>
+				<td class = "tableLarger" id = "NowComText">现有确诊</td>
+				<td class = "tableLarger" id = "NowSpeText">现有疑似</td>
+				<td class = "tableSplit" rowspan = '3'>|</td>
+				<td class = "tableLarger" id = "NowNerText">现有重症</td>
+			</tr>
+			<tr>
+				<td class = "tableMiddle" id = "NowCom">13904</td>
+				<td class = "tableMiddle" id = "NowSpe">1724</td>
+				<td class = "tableMiddle" id = "NowNer">3456</td>
+			</tr>
+			<tr>
+				<td class = "tableSmall">较昨日<span id = "NowComCom"> +2579</span></td>
+				<td class = "tableSmall">较昨日<span id = "NowSpeCom"> +284</span></td>
+				<td class = "tableSmall">较昨日<span id = "NowNerCom"> +321</span></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td class = "tableLarger" id = "allComText">累计确诊</td>
+				<td class = "tableLarger" id = "allCurText">累计治愈</td>
+				<td class = "tableSplit" rowspan = '3'>|</td>
+				<td class = "tableLarger" id = "allDeaText">累计死亡</td>
+			</tr>
+			<tr>
+				<td class = "tableMiddle" id = "allCom">14479</td>
+				<td class = "tableMiddle" id = "allCur">295</td>
+				<td class = "tableMiddle" id = "allDea">304</td>
+			</tr>
+			<tr>
+				<td class = "tableSmall">较昨日<span id = "allComCom">  +2579</span></td>
+				<td class = "tableSmall">较昨日<span id = "allCurCom"> +80</span></td>
+				<td class = "tableSmall">较昨日<span id = "allDeaCom">   +45</span></td>
+			</tr>
+		</table>
+		<p id = "deadlineTime">数据截止到<span id = "dataDeadline">2020.2.20 12:50</span>|数据来源于某统计网站
+	</div>
+
+
+    <div class="map">
+        <div id = "header_2">
+            <h1>全国疫情地图</h1>
+        </div>
+        <div id = "trans">
+            <input class="but" type="button" id = "butnow" value="现有确诊" onclick="current()">
+            <input class="but" type="button" id = "butall" value="累计确诊" onclick="past()">
+        </div>
+        <div id="maps"></div>
+        <div id = "varytrend">
+            <h1 id = "header_3">变化趋势</h1>
+        </div>
+        <div id="box"></div>
+        <script type="text/javascript">
+            var myChart=echarts.init(document.getElementById("box"));
+            var option={
+                //标题
+                title:{
+                    text:"折线图"
+                },
+                //工具箱
+                //保存图片
+                toolbox:{
+                    show:true,
+                    feature:{
+                        saveAsImage:{
+                            show:true
+                        }
+                    }
+                },
+                tooltip:{
+                    trigger: 'axis'
+                },
+                //图例-每一条数据的名字叫销量
+                legend:{
+                    data:['确诊人数（单位：人)','疑似人数（单位：人)',"死亡人数（单位：人)",'治愈人数（单位：人)']
+                },
+                //x轴
+                xAxis:{
+                    name:"日期",
+                    data:["2020-01-19","2020-01-20","2020-01-21","2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26"
+                        ,"2020-01-27","2020-01-28","2020-01-29","2020-01-30","2020-01-31","2020-02-01","2020-02-02"]
+                    //data:["2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26","2020-01-27"]
+                },
+                //y轴没有显式设置，根据值自动生成y轴
+                yAxis:{
+                    name:"人数"
+                },
+                //数据-data是最终要显示的数据
+                series:[
+                    {
+                        name:'确诊人数（单位：人)',
+                        type:'line',
+                        data:[2,7,283,430,599,859,1286,1970,2709,4459,5906,7588,9524,11443,13904],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"red"
+                    },
+                    {
+                        name:'疑似人数（单位：人)',
+                        type:'line',
+                        data:[0,0,6,23,23,25,68,140,282,483,666,932,1182,1147,1742],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"orange"
+                    },
+                    {
+                        name:'死亡人数（单位：人)',
+                        type:'line',
+                        data:[0,0,6,9,17,26,41,56,82,106,132,170,213,259,304],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"black"
+                    },
+                    {
+                        name:'治愈人数（单位：人)',
+                        type:'line',
+                        data:[0,0,25,28,30,34,37,47,51,61,68,91,136,215,295],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"green"
+                    }
+                ]
+            };
+            //使用刚刚指定的配置项和数据项显示图表
+            myChart.setOption(option);
+        </script>
+        <div id = "quicktour">
+            <h1>疫情速览</h1>
+        </div>
+        <div id="table" style="padding:0 0 7% 0;">
+            <table>
+                <tr>
+                    <th id = "areatable">地区</th>
+                    <th id = "morecomtable">新增确诊</th>
+                    <th id = "allcomtable">累计确诊</th>
+                    <th id = "curetable">治愈</th>
+                    <th id = "deadtable">死亡</th>
+                </tr>
+                <tr>
+                    <td class="province">湖北省</td>
+                    <td class="td">1921</td>
+                    <td class="td">9074</td>
+                    <td class="td">179</td>
+                    <td class="td">0</td>
+                </tr>
+                <tr>
+                    <td class="province">北京市</td>
+                    <td class="td">8</td>
+                    <td class="td">191</td>
+                    <td class="td">0</td>
+                    <td class="td">2</td>
+                </tr>
+                <tr>
+                    <td class="province">广东省</td>
+                    <td class="td">79</td>
+                    <td class="td">663</td>
+                    <td class="td">2</td>
+                    <td class="td">0</td>
+                </tr>
+                <tr>
+                    <td class="province">中国香港</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                </tr>
+                <tr>
+                    <td class="province">四川省</td>
+                    <td class="td">24</td>
+                    <td class="td">232</td>
+                    <td class="td">3</td>
+                    <td class="td">2</td>
+                </tr>
+                <tr>
+                    <td class="province">甘肃省</td>
+                    <td class="td">11</td>
+                    <td class="td">52</td>
+                    <td class="td">3</td>
+                    <td class="td">0</td>
+                </tr>
+                <tr>
+                    <td class="province">中国台湾</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                </tr>
+                                <tr>
+                    <td class="province">山东省</td>
+                    <td class="td">23</td>
+                    <td class="td">225</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">重庆市</td>
+                    <td class="td">24</td>
+                    <td class="td">262</td>
+                    <td class="td">3</td>
+                    <td class="td">2</td>
+                </tr>
+                                <tr>
+                    <td class="province">上海市</td>
+                    <td class="td">24</td>
+                    <td class="td">167</td>
+                    <td class="td">10</td>
+                    <td class="td">1</td>
+                </tr>
+                                <tr>
+                    <td class="province">湖南省</td>
+                    <td class="td">74</td>
+                    <td class="td">463</td>
+                    <td class="td">8</td>
+                    <td class="td">0</td>
+                </tr>
+                <tr>
+                    <td class="province">辽宁省</td>
+                    <td class="td">4</td>
+                    <td class="td">64</td>
+                    <td class="td">1</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">广西壮族自治区</td>
+                    <td class="td">16</td>
+                    <td class="td">129</td>
+                    <td class="td">2</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">陕西省</td>
+                    <td class="td">15</td>
+                    <td class="td">102</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">贵州省</td>
+                    <td class="td">8</td>
+                    <td class="td">41</td>
+                    <td class="td">2</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">浙江省</td>
+                    <td class="td">62</td>
+                    <td class="td">661</td>
+                    <td class="td">22</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">河北省</td>
+                    <td class="td">9</td>
+                    <td class="td">69</td>
+                    <td class="td">3</td>
+                    <td class="td">2</td>
+                </tr>
+                                <tr>
+                    <td class="province">江苏省</td>
+                    <td class="td">34</td>
+                    <td class="td">334</td>
+                    <td class="td">6</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">海南省</td>
+                    <td class="td">7</td>
+                    <td class="td">69</td>
+                    <td class="td">4</td>
+                    <td class="td">2</td>
+                </tr>
+                                <tr>
+                    <td class="province">内蒙古自治区</td>
+                    <td class="td">3</td>
+                    <td class="td">20</td>
+                    <td class="td">1</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">宁夏回族自治区</td>
+                    <td class="td">2</td>
+                    <td class="td">26</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">河南省</td>
+                    <td class="td">71</td>
+                    <td class="td">493</td>
+                    <td class="td">3</td>
+                    <td class="td">4</td>
+                </tr>
+                                <tr>
+                    <td class="province">江西省</td>
+                    <td class="td">47</td>
+                    <td class="td">334</td>
+                    <td class="td">10</td>
+                    <td class="td">1</td>
+                </tr>
+                                <tr>
+                    <td class="province">云南省</td>
+                    <td class="td">12</td>
+                    <td class="td">105</td>
+                    <td class="td">3</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">天津市</td>
+                    <td class="td">9</td>
+                    <td class="td">41</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">山西省</td>
+                    <td class="td">9</td>
+                    <td class="td">56</td>
+                    <td class="td">1</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">吉林省</td>
+                    <td class="td">0</td>
+                    <td class="td">16</td>
+                    <td class="td">1</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">安徽省</td>
+                    <td class="td">43</td>
+                    <td class="td">339</td>
+                    <td class="td">5</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">福建省</td>
+                    <td class="td">20</td>
+                    <td class="td">179</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">新疆维吾尔自治区</td>
+                    <td class="td">3</td>
+                    <td class="td">21</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">青海省</td>
+                    <td class="td">2</td>
+                    <td class="td">10</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
+                </tr>
+                                <tr>
+                    <td class="province">中国澳门</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                    <td class="td">数据缺失</td>
+                </tr>
+                                <tr>
+                    <td class="province">西藏自治区</td>
+                    <td class="td">0</td>
+                    <td class="td">1</td>
+                    <td class="td">0</td>
+                    <td class="td">0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="new">
+        <div class="newtitle">
+            <h1>新闻速报</h1>
+        </div>
+        <section id="cd-timeline" class="cd-container">
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-picture">
+                    <img src="img/cd-icon-picture.svg" alt="Picture">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>习近平考察火神山医院</h2>
+                    <p>10日上午，习近平一下飞机就专程前往火神山医院，了解医院建设运行、患者收治、
+                        医务人员防护保障、科研攻关等情况，亲切看望正在接受治疗的患者，关心慰问日夜奋战在抗击疫情第一线的医务工作者，
+                        勉励大家坚定信心，战胜疫情。</p>
+                    <a href="https://www.sohu.com/a/378988083_100170731?_trans_=000014_bdss_dkwhfy" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-10 14:13</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-movie">
+                    <img src="img/cd-icon-movie.svg" alt="Movie">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>全关了！最后一家方舱医院今日休舱 方舱医院圆满完成历史使命</h2>
+                    <p>3月10日下午3点半，随着最后一批49名患者从洪山体育馆走出，运行了35天的武汉市首个方舱医院——武昌方舱医院正式休舱。
+                        方舱医院，这一在武汉市新冠肺炎疫情防控关键时期，发挥了关键作用的特殊医院，圆满完成了历史使命。</p>
+                    <a href="http://www.fivepx.net/texiaofenxiang/2015/01-07/67.html" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-10 17:20</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-picture">
+                    <img src="img/cd-icon-picture.svg" alt="Picture">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>疫情什么时候能结束？李兰娟院士等专家回应 </h2>
+                    <p>“现在全国范围内疫情已经基本得到控制，武汉疫情也在明显变好，希望3月底新增病例可以全部清零。”
+                        国家卫健委高级别专家组成员、中国工程院院士李兰娟告诉人民日报健康客户端记者。</p>
+                    <a href="https://www.sohu.com/a/378946869_162522?_trans_=000014_bdss_dkwhfy" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-10 12:40</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-movie">
+                    <img src="img/cd-icon-movie.svg" alt="Movie">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>新冠肺炎下的“疫苗赛跑”</h2>
+                    <p>近日，一条“全世界第一支新冠状病毒疫苗阶段性成功注射到发明人陈薇院士的左臂上”的微博广泛流传，该微博还配有一张陈薇单手叉腰、
+                        在手臂注射针剂的照片。陈薇是中国工程院院士、军事医学研究院研究员，1月26日带领团队进驻武汉。</p>
+                    <a href="https://www.sohu.com/a/378057217_114988?_trans_=000014_bdss_dkwhfy" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-06 13:16</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-movie">
+                    <img src="img/cd-icon-location.svg" alt="Location">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>欧盟27国均现疫情，意大利病例近万封闭全国、囚犯越狱</h2>
+                    <p>塞浦路斯卫生部长约安努9日表示，塞浦路斯首次发现2例新冠肺炎确诊病例，均为输入型病例，
+                        两位患者分别从英国和意大利返回塞浦路斯。 至此，欧盟27个成员国均出现了新冠肺炎病例，其中意大利病例近万，
+                        法国和西班牙的感染人数破千。</p>
+                    <a href="http://news.sina.com.cn/w/2020-03-10/doc-iimxxstf7976870.shtml" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020年03月10日 20:36</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="js/interaction.js" type="text/javascript"></script>
+</body>
+</html>

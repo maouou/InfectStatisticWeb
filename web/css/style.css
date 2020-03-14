@@ -1,0 +1,312 @@
+*,p{
+    color: black;
+	margin: 0;
+}
+
+body{
+    height: 100%;
+    width: 900px;
+    margin: 0 auto;
+}
+h1{
+    color: black;
+    text-align: center;
+}
+h4{
+	color:red;
+	text-align: right;
+}
+.main{
+    width: 100%;
+    height: 1000px;
+    background-color:antiquewhite;
+}
+#maps{
+	width: 100%;
+	height:400px;
+}
+#box{
+	background-color: khaki;
+	width: 100%;
+	height:400px;
+}
+.cal
+{
+    /*background-color:goldenrod;*/
+    align:center;
+    padding:10% 0 7% 0;
+}
+#header_2
+{
+	align:center;
+	border-radius: 20px;
+}
+.cal ul li{
+    line-height: 50px;
+    margin-left: 12%;
+    margin-right: 12%;
+    display: inline;
+}
+/*#li{
+    text-align: center;
+    background-color: darkgray;
+    font-size:2.0em;
+}
+#li2{
+    text-align: center;
+    background-color: cadetblue;
+}*/
+.tip{
+    display: flex;
+    justify-content: space-around;
+    background-color: aqua;
+    height: 200px;
+}
+.a1{
+    width: 33%;
+    float: left;
+    background-color: gold;
+}
+.a2{
+    width: 33%;
+    float: left;
+    background-color: cadetblue;
+}
+.a3{
+    width: 33%;
+    float: left;
+    background-color: goldenrod;
+}
+.map{
+    height: 205%;
+    /*background-color: darkcyan;*/
+}
+#table table tr th{
+    width: 5%;
+}
+#table table tr td{
+    text-align: center;
+}
+.td{
+    background-color:gainsboro;
+    border-radius: 5px;
+}
+.province{
+	background-color: #4cecff;
+	border-radius: 5px;
+}
+.newtitle{
+	background-color: antiquewhite;
+}
+.but{
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 45%;
+    height:30%;
+    font-size:1.2em;
+    color:red;
+    font-weight:bold;
+    background: #e3fff3;
+	border-radius: 20px;
+	border: none;
+	outline-color: khaki;
+}
+#btunow
+{
+	color:#ff0000;
+}
+#butall
+{
+	color:#ca0000;
+}
+#trans
+{
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+#table{
+	background-color: khaki;
+}
+.new{
+    background-color: khaki;
+}
+.foot{
+    background-color: indianred;
+}
+#maxheader
+{
+	align:center;
+}
+.divide
+{
+	padding:3% 0 1% 0;
+	text-align:center;
+	color:#b0b0b0;
+}
+#varytrend
+{
+	border-radius: 20px;
+}
+#quicktour
+{
+	border-radius: 20px;
+}
+#areatable
+{
+	color:#000000;
+}
+#morecomtable
+{
+	color:#ff0000;
+}
+#allcomtable
+{
+	color:#ca0000;
+}
+#curetable
+{
+	color:#00db00;
+}
+#deadtable
+{
+	color:#b0b0b0;
+}
+
+
+
+
+body,html
+{
+	margin:0;
+	padding:0;
+    background-color: #e0e0e0;
+    width:100%;
+    /*height:100%;*/
+}
+.main
+{
+	margin:0 auto;
+    height:100%;
+    width:60%;
+}
+h1
+{
+	font-size:300%;
+}
+#header
+{
+	padding:10% 0 7% 0;
+	height:12.5%;
+	text-align:center;
+}
+#dataInfo
+{
+	text-align:center;
+	align:center;
+	margin:0 auto;
+	background-color: #14ffc0;
+	border-radius: 10px;
+}
+#dataOverviewTable
+{
+	align:center;
+	margin:0 auto;
+	width:100%;
+}
+.tableLarger
+{
+	font-size:1.5em;
+}
+.tableMiddle
+{
+	font-size:1.2em;
+}
+.tableSmall
+{
+	font-size:.8em;
+	padding:auto auto 5% auto;
+	margin:auto auto 5% auto;
+	color:#b0b0b0;
+}
+#deadlineTime
+{
+	text-align:left;
+	font-size:.8em;
+	text-indent:5em;
+	color:#e0e0e0;
+}
+#NowComText,#NowCom,#NowComCom
+{
+	color:#ff0000;
+}
+#NowSpeText,#NowSpe,#NowSpeCom
+{
+	color:#ff8000;
+}
+#NowNerText,#NowNer,#NowNerCom
+{
+	color:#930000;
+}
+#allComText,#allCom,#allComCom
+{
+	color:#ca0000;
+}
+#allCurText,#allCur,#allCurCom
+{
+	color:#00db00;
+}
+#allDeaText,#allDea,#allDeaCom
+{
+	color:#000000;
+}
+#ChinaMap
+{
+	height:400px;
+	width:580px;
+	
+}
+#dataTableInfo
+{
+	text-align:center;
+	align:center;
+	margin:0 auto;
+}
+#dataTableInfoTable
+{
+	align:center;
+	margin:0 auto;
+	width:60%;
+	border:2px solid white;
+}
+#dataTableInfoTable td
+{
+	background-color:#adadad;
+}
+td
+{
+	
+}
+#areaInTable
+{
+	color:000000;
+}
+#comInTable
+{
+	color:#ff0000;
+}
+#speInTable
+{
+	color:#ff8000;
+}
+#deaInTable
+{
+	color:#b0b0b0;
+}
+#curInTable
+{
+	color:#00db00;
+}
+.tableSplit
+{
+	color:#b0b0b0;
+}
